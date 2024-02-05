@@ -22,13 +22,14 @@ To get started with this project, follow the steps below:
 1. Generate your NASA API key by visiting [NASA API Key Generator](https://api.nasa.gov/).
 2. Replace `YOUR_NASA_API_KEY` in the application's configuration with the obtained key.
 
+### Github Link
+[Link](https://github.com/NyeishaJPace/SpringClassDemo)
+
 ### 2. Run the Application
 
 ```bash
 ./gradlew bootRun
 
-### Github Link
-[Link](https://github.com/NyeishaJPace/SpringClassDemo)
 
 
 
