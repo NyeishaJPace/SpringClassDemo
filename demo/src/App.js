@@ -1,7 +1,8 @@
 import React from 'react';
 import { BrowserRouter as Router, Route, Routes, Link, Outlet} from "react-router-dom";
 import NasaApodPage from "./pages/NasaApodPage";
-import NasaApiController from './controllers/NasaApiController';
+//import NasaApiController from './controllers/NasaApiController';
+import NasaApiController from './main/java/com/example/demo/controllers/NasaApiController.java';
 
 function App() {
     return (

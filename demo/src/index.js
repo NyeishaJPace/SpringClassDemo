@@ -3,7 +3,7 @@ import { BrowserRouter, Routes, Route } from "react-router-dom";
 import NasaApodPage from "./pages/NasaApodPage";
 import App from './App';
 
-export default function App() {
+export default function MainApp() {
     return (
         <BrowserRouter>
             <Routes>
@@ -15,4 +15,4 @@ export default function App() {
 }
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
-root.render(<App />);
+root.render(<MainApp />);
