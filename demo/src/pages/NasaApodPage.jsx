@@ -1,12 +1,20 @@
-import { Outlet, Link } from "react-router-dom";
+//import { Outlet, Link } from "react-router-dom";
+import React, { useState } from 'react';
+import axios from 'axios';
+import ApodService from './services/ApodService';
 
 const NasaApodPage = () => {
     const [date, setDate] = useState('');
     const [startDate, setStartDate] = useState('');
     const [endDate, setEndDate] = useState('');
     const [count, setCount] = useState('');
-    const [apodDate, setApodDate] = useState('');
-    const navigate = useNavigate('');
+    const [apodDate, setApodDate] = useState([]);
+
+    const handleFetchData = async () => {
+        const apodService = new ApodService();
+        const response = await apodService.getAstronomyPictureOfTheDay(apodDate, setStartDate, setEndDate)
+        setApodData(response);
+    };
 
     const handleSubmit = async (e) => {
         e.preventDefault();

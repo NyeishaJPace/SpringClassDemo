@@ -1,5 +1,7 @@
+import React from 'react';
 import { BrowserRouter as Router, Route, Routes, Link, Outlet} from "react-router-dom";
 import NasaApodPage from "./pages/NasaApodPage";
+import NasaApiController from './controllers/NasaApiController';
 
 function App() {
     return (
@@ -20,6 +22,7 @@ function App() {
 
                 <Routes>
                     <Route path="/nasa-apod" element={<NasaApodPage />} />
+                    <Route path="/api/nasa/apod" element={<NasaApiController />} />
                 </Routes>
             </div>
         </Router>

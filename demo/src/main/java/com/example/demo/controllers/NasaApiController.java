@@ -1,30 +1,26 @@
 package com.example.demo.controllers;
 
-import org.springframework.beans.factory.annotation.Value;
+import com.example.demo.services.ApodService;
+import com.example.demo.dto.NasaApiResponse;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
-import org.springframework.web.client.RestTemplate;
-
-import com.example.demo.dto.NasaApiResponse;
 
 @RestController
+@RequestMapping("/api/nasa")
 public class NasaApiController {
 
-    @Value("${nasa.api.key}")
-    private String apiKey;
+    @Autowired
+    private ApodService apodService;
 
-    @GetMapping("/nasa/apod")
+    @GetMapping("/apod")
     public NasaApiResponse getAstronomyPictureOfTheDay(@RequestParam(required = false) String date,
-                                                       @RequestParam(required = false) Boolean hd) {
-        String apiUrl = "https://api.nasa.gov/planetary/apod";
-        String apiKeyParam = "api_key=" + apiKey;
-        String dateParam = (date != null) ? "&date=" + date : "";
-        String hdParam = (hd != null) ? "&hd=" + hd : "";
-
-        String url = String.format("%s?%s%s%s", apiUrl, apiKeyParam, dateParam, hdParam);
-
-        RestTemplate restTemplate = new RestTemplate();
-        return restTemplate.getForObject(url, NasaApiResponse.class);
+                                                      @RequestParam(required = false) String fromDate,
+                                                      @RequestParam(required = false) String toDate,
+                                                      @RequestParam(required = false) String count) {
+        return apodService.getAstronomyPictureOfTheDay(date, fromDate, toDate, count);
     }
 }
+
